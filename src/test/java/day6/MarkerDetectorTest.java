@@ -17,7 +17,7 @@ class MarkerDetectorTest {
     @ParameterizedTest
     @CsvSource(value = {"mjqjpqmgbljsphdztnvjfqwrcgsmlb,7", "bvwbjplbgvbhsrlpgdmjqwftvncz,5", "nppdvjthqldpwncqszvftbrmjlhg, 6"})
     void detectMarkerPosition(String input, int expectedMarkerPosition) {
-        assertThat(markerDetector.detectMarkerPosition(input)).isEqualTo(expectedMarkerPosition);
+        assertThat(markerDetector.detectMarkerPosition(input, 4)).isEqualTo(expectedMarkerPosition);
     }
 
     @Test
@@ -29,7 +29,7 @@ class MarkerDetectorTest {
             reader = new BufferedReader(new FileReader("src/test/resources/adventOfCode_2022_6_Input.txt"));
             String line = reader.readLine();
             while (line != null) {
-                result = markerDetector.detectMarkerPosition(line);
+                result = markerDetector.detectMarkerPosition(line, 4);
                 // read next line
                 line = reader.readLine();
             }
