@@ -39,4 +39,24 @@ class MarkerDetectorTest {
         }
         assertThat(result).isEqualTo(1909);
     }
+
+    @Test
+    void result2() {
+        BufferedReader reader;
+        int result = 0;
+
+        try {
+            reader = new BufferedReader(new FileReader("src/test/resources/adventOfCode_2022_6_Input.txt"));
+            String line = reader.readLine();
+            while (line != null) {
+                result = markerDetector.detectMarkerPosition(line, 14);
+                // read next line
+                line = reader.readLine();
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        assertThat(result).isEqualTo(3380);
+    }
 }
